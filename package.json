@@ -6,13 +6,14 @@
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "start": "ts-node backend/server.ts",
-    "server": "nodemon backend/server.ts"
+    "server": "nodemon -w *.ts backend/server.ts"
   },
   "keywords": [],
   "author": "Josh Graham",
   "license": "ISC",
   "dependencies": {
     "colors": "^1.4.0",
+    "colors.ts": "^1.0.20",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-async-handler": "^1.2.0",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^17.0.25",
     "nodemon": "^2.0.15",
     "tslint": "^6.1.3",
