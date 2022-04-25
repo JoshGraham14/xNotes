@@ -6,7 +6,8 @@
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "start": "ts-node backend/server.ts",
-    "server": "nodemon -w *.ts backend/server.ts"
+    "server": "nodemon -w *.ts backend/server.ts",
+    "client": "npm start --prefix frontend"
   },
   "keywords": [],
   "author": "Josh Graham",
