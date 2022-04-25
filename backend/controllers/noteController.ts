@@ -8,7 +8,9 @@ import { IUserAuthRequest } from '../interfaces'
 // @access  Private
 export const getNotes = asyncHandler(
 	async (req: IUserAuthRequest, res: Response) => {
-		const notes = await Note.find({ user: req.user.id })
+		const notes = await Note.find({ user: req.user.id }).sort({
+			section: 1,
+		})
 		res.status(200).json(notes)
 	}
 )
@@ -36,13 +38,14 @@ export const getOneNote = asyncHandler(
 // @access  Private
 export const setNote = asyncHandler(
 	async (req: IUserAuthRequest, res: Response) => {
-		if (!req.body.content) {
+		if (!req.body.content || !req.body.section) {
 			res.status(400)
-			throw new Error('Please add a text field')
+			throw new Error('Missing a text or section field')
 		}
 
 		const note = await Note.create({
 			content: req.body.content,
+			section: req.body.section,
 			user: req.user.id,
 		})
 
