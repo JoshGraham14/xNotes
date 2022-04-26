@@ -1,15 +1,27 @@
-import { useState } from 'react'
-import { FaUser } from 'react-icons/fa'
+import { useState, useRef } from 'react'
+import { FaUser, FaEye, FaEyeSlash } from 'react-icons/fa'
 
 export const Register = () => {
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
-		password1: '',
+		password: '',
 		password2: '',
 	})
+	const [passwordToggle, setPasswordToggle] = useState(false)
+	const [passwordToggle2, setPasswordToggle2] = useState(false)
+	const passwordInput = useRef<HTMLInputElement>(null)
+	const passwordInput2 = useRef<HTMLInputElement>(null)
 
-	const { name, email, password1, password2 } = formData
+	const { name, email, password, password2 } = formData
+
+	const togglePassword = (e: React.MouseEvent<SVGElement>) => {
+		setPasswordToggle(!passwordToggle)
+	}
+
+	const togglePassword2 = (e: React.MouseEvent<SVGElement>) => {
+		setPasswordToggle2(!passwordToggle2)
+	}
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFormData(prevState => ({
@@ -58,25 +70,53 @@ export const Register = () => {
 						</div>
 						<div>
 							<label htmlFor='password'>Password</label>
-							<input
-								type='password'
-								id='password'
-								name='password'
-								className='password-input'
-								value={password1}
-								onChange={handleChange}
-							/>
+							<div className='form-input'>
+								<input
+									type={passwordToggle ? 'text' : 'password'}
+									id='password'
+									name='password'
+									className='password-input'
+									value={password}
+									onChange={handleChange}
+									ref={passwordInput}
+								/>
+								{passwordToggle ? (
+									<FaEyeSlash
+										className='form-icon show-password'
+										onClick={togglePassword}
+									/>
+								) : (
+									<FaEye
+										className='form-icon show-password'
+										onClick={togglePassword}
+									/>
+								)}
+							</div>
 						</div>
 						<div>
 							<label htmlFor='password2'>Confirm Password</label>
-							<input
-								type='password'
-								id='password2'
-								name='password2'
-								className='password-input'
-								value={password2}
-								onChange={handleChange}
-							/>
+							<div className='form-input'>
+								<input
+									type={passwordToggle2 ? 'text' : 'password'}
+									id='password2'
+									name='password2'
+									className='password-input'
+									value={password2}
+									onChange={handleChange}
+									ref={passwordInput2}
+								/>
+								{passwordToggle2 ? (
+									<FaEyeSlash
+										className='form-icon show-password'
+										onClick={togglePassword2}
+									/>
+								) : (
+									<FaEye
+										className='form-icon show-password'
+										onClick={togglePassword2}
+									/>
+								)}
+							</div>
 						</div>
 
 						<button type='submit' className='btn-submit'>

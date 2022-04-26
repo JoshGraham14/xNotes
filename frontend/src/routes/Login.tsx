@@ -9,15 +9,11 @@ export const Login = () => {
 		password: '',
 	})
 	const [passwordToggle, setPasswordToggle] = useState(false)
-	const { email, password } = formData
 	const passwordInput = useRef<HTMLInputElement>(null)
+	const { email, password } = formData
 
 	const togglePassword = (e: React.MouseEvent<SVGElement>) => {
 		setPasswordToggle(!passwordToggle)
-		// Re-focus the password input after clicking the toggle
-		if (passwordInput.current) {
-			passwordInput.current.focus()
-		}
 	}
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

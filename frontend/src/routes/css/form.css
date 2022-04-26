@@ -14,7 +14,7 @@
     padding: 2em;
     border-radius: 1em;
     box-shadow: 0 0 0.75em 0.07em rgba(0, 0, 0, 0.171);
-    width: clamp(25em, 33vw, 60em);
+    width: clamp(24em, 33vw, 60em);
 }
 
 .form-section {
@@ -55,7 +55,9 @@ input {
     font-size: 1.2rem;
     border: none;
     border-radius: 0.5em;
-    width: clamp(18em, 26vw, 50em);
+    width: clamp(16.7em, 29.2vw, 45em);
+    /* width: clamp(17em, 29vw, 50em); */
+    /* clamp(25em, 33vw, 60em); */
     padding: 0.5em 1em;
     margin-top: 0.3em;
 }
