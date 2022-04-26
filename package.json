@@ -7,7 +7,8 @@
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "start": "ts-node backend/server.ts",
     "server": "nodemon -w *.ts backend/server.ts",
-    "client": "npm start --prefix frontend"
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "Josh Graham",

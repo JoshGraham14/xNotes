@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { FaSignInAlt, FaEye, FaEyeSlash } from 'react-icons/fa'
+import { PasswordInput } from '../components/passwordInput/PasswordInput'
 
 import './css/form.css'
 
@@ -8,13 +9,8 @@ export const Login = () => {
 		email: '',
 		password: '',
 	})
-	const [passwordToggle, setPasswordToggle] = useState(false)
-	const passwordInput = useRef<HTMLInputElement>(null)
-	const { email, password } = formData
 
-	const togglePassword = (e: React.MouseEvent<SVGElement>) => {
-		setPasswordToggle(!passwordToggle)
-	}
+	const { email, password } = formData
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFormData(prevState => ({
@@ -51,37 +47,12 @@ export const Login = () => {
 								autoFocus
 							/>
 						</div>
-						<div>
-							<label htmlFor='password'>Password</label>
-							<div className='form-input'>
-								<input
-									type={passwordToggle ? 'text' : 'password'}
-									id='password'
-									name='password'
-									className='password-input'
-									value={password}
-									onChange={handleChange}
-									ref={passwordInput}
-									onFocus={e =>
-										e.currentTarget.setSelectionRange(
-											e.currentTarget.value.length,
-											e.currentTarget.value.length
-										)
-									}
-								/>
-								{passwordToggle ? (
-									<FaEyeSlash
-										className='form-icon show-password'
-										onClick={togglePassword}
-									/>
-								) : (
-									<FaEye
-										className='form-icon show-password'
-										onClick={togglePassword}
-									/>
-								)}
-							</div>
-						</div>
+						<PasswordInput
+							password={password}
+							name='password'
+							label='Password'
+							handleChange={handleChange}
+						/>
 						<button type='submit' className='btn-submit'>
 							Login
 						</button>

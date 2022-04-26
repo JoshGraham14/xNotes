@@ -66,25 +66,6 @@ input:focus {
     outline: 0.2em solid var(--color-accent-dark);
 }
 
-.password-input {
-    padding-right: 2.5em;
-}
-
-.form-icon {
-    font-size: 1.6rem;
-    margin-top: 0.2em;
-}
-
-.show-password {
-    position: absolute;
-    color: var(--color-accent-dark);
-    right: 0.5em;
-}
-
-.show-password:hover {
-    cursor: pointer;
-}
-
 .form-input {
     position: relative;
     display: flex;
