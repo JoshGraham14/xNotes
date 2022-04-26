@@ -1,0 +1,26 @@
+.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-block: 1em;
+    padding-inline: clamp(1em, 4vw ,5em);
+    font-size: 1.5rem;
+}
+
+.topnav-links {
+    display: flex;
+    list-style: none;
+    gap: clamp(0.5em, 2vw, 1.5em);
+}
+
+.logo-link {
+    color: var(--color-neutral-light);
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.2em, 0.4em, 0.5em);
+    color: var(--color-neutral-light);
+}
