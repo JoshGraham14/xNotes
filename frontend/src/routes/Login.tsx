@@ -1,6 +1,7 @@
-import { useState, useRef } from 'react'
-import { FaSignInAlt, FaEye, FaEyeSlash } from 'react-icons/fa'
+import { useState } from 'react'
+import { FaSignInAlt } from 'react-icons/fa'
 import { PasswordInput } from '../components/passwordInput/PasswordInput'
+import { login, IUser } from '../auth/authFunctions'
 
 import './css/form.css'
 
@@ -21,6 +22,8 @@ export const Login = () => {
 
 	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault()
+		login(formData)
+		const user: IUser = JSON.parse(localStorage.getItem('user') || '{}')
 	}
 
 	return (

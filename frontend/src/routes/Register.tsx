@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { PasswordInput } from '../components/passwordInput/PasswordInput'
+import { register } from '../auth/authFunctions'
 
 export const Register = () => {
 	const [formData, setFormData] = useState({
@@ -21,6 +22,7 @@ export const Register = () => {
 
 	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault()
+		register(formData)
 	}
 
 	return (
