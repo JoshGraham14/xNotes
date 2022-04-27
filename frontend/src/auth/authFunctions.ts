@@ -33,7 +33,7 @@ export const register = async (userInfo: IUserRegisterInfo): Promise<IUser> => {
 				},
 			}
 		)
-		console.log(data)
+		localStorage.setItem('user', JSON.stringify(data))
 		return data
 	} catch (error: any) {
 		throw new Error(error.message)
@@ -57,4 +57,18 @@ export const login = async (userInfo: IUserLoginInfo): Promise<IUser> => {
 	} catch (error: any) {
 		throw new Error(error.message)
 	}
+}
+
+export const getCurrentUser = (): IUser => {
+	return JSON.parse(
+		localStorage.getItem('user') ||
+			'{"_id": "", "name": "", "email": "", "token": ""}'
+	)
+}
+
+export const logout = () => {
+	localStorage.setItem(
+		'user',
+		'{"_id": "", "name": "", "email": "", "token": ""}'
+	)
 }

@@ -1,15 +1,21 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FaSignInAlt } from 'react-icons/fa'
 import { PasswordInput } from '../components/passwordInput/PasswordInput'
 import { login, IUser } from '../auth/authFunctions'
 
 import './css/form.css'
+import LoggedInContext from '../LogginInContext'
+
+// TODO: give the user a message when their credentials are incorrect
 
 export const Login = () => {
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
 	})
+	const { loggedIn, setLoggedIn } = useContext(LoggedInContext)
+	const navigate = useNavigate()
 
 	const { email, password } = formData
 
@@ -20,10 +26,15 @@ export const Login = () => {
 		}))
 	}
 
-	const handleSubmit = (e: React.SyntheticEvent) => {
+	const handleSubmit = async (e: React.SyntheticEvent) => {
 		e.preventDefault()
-		login(formData)
-		const user: IUser = JSON.parse(localStorage.getItem('user') || '{}')
+		try {
+			const user = await login(formData)
+			setLoggedIn(true)
+			navigate('/')
+		} catch (error) {
+			console.log('wrong login info')
+		}
 	}
 
 	return (
