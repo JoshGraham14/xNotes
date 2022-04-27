@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { IUser, logout, getCurrentUser } from '../../auth/authFunctions'
+import { IUser, logout, getCurrentUser } from '../../util/auth/authFunctions'
 import LoggedInContext from '../../LogginInContext'
 
 import './header.css'

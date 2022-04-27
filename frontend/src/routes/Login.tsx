@@ -2,7 +2,7 @@ import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaSignInAlt } from 'react-icons/fa'
 import { PasswordInput } from '../components/passwordInput/PasswordInput'
-import { login, IUser } from '../auth/authFunctions'
+import { login, IUser } from '../util/auth/authFunctions'
 
 import './css/form.css'
 import LoggedInContext from '../LogginInContext'

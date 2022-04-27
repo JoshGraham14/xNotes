@@ -1,19 +1,23 @@
-import { IUser } from '../auth/authFunctions'
+import { getCurrentUser, IUser } from '../util/auth/authFunctions'
+import { Sidenav } from '../components/sidenav/Sidenav'
 
 export const Home = () => {
-	const user: IUser | {} = JSON.parse(localStorage.getItem('user') || '{}')
-	if (user === {}) {
+	const user: IUser = getCurrentUser()
+	if (user.name === '') {
 		return (
-			<div>
+			<>
 				<h1>Home</h1>
 				<h2>You must log in to view/create notes</h2>
-			</div>
+			</>
 		)
 	} else {
 		return (
-			<div>
-				<h1>Welcome {(user as IUser).name}</h1>
-			</div>
+			<>
+				<div>
+					<h1>Welcome {(user as IUser).name}</h1>
+				</div>
+				<Sidenav />
+			</>
 		)
 	}
 }

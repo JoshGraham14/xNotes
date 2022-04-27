@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { PasswordInput } from '../components/passwordInput/PasswordInput'
-import { register } from '../auth/authFunctions'
+import { register } from '../util/auth/authFunctions'
 import LoggedInContext from '../LogginInContext'
 import { useNavigate } from 'react-router-dom'
 
