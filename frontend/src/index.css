@@ -9,8 +9,10 @@
 :root {
     --color-neutral-light: hsl(0, 0%, 100%);
     --color-neutral-dark: hsl(0, 0%, 10%);
-    --color-accent-dark: hsl(278, 65%, 30%);
+    
     --color-accent-light: hsl(278, 65%, 50%);
+    --color-accent-dark: hsl(278, 65%, 30%);
+    --color-accent-darker: hsl(278, 65%, 15%);
 }
 
 body {
