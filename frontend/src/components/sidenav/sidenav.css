@@ -1,0 +1,7 @@
+.sidenav {
+    background-color: var(--color-accent-darker);
+    width: 40ch;
+    height: 100%;
+    overflow: hidden;
+
+}

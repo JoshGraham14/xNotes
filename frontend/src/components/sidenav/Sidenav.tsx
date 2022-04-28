@@ -1,12 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import { getCurrentUser } from '../../util/auth/authFunctions'
-import { getSections, ISection } from '../../util/data/dataFunctions'
+import { getSections, INote, ISection } from '../../util/data/dataFunctions'
 import { Section } from '../section/Section'
 
 import './sidenav.css'
 
-export const Sidenav = () => {
+interface Props {
+	setCurrentNote: Dispatch<SetStateAction<INote>>
+}
+
+export const Sidenav = (props: Props) => {
 	const [sections, setSections] = useState([] as ISection[])
+	const { setCurrentNote } = props
 	const user = getCurrentUser()
 
 	useEffect(() => {
@@ -18,10 +23,16 @@ export const Sidenav = () => {
 	}, [])
 
 	return (
-		<div>
-			<p>This is the side nav</p>
+		<div className='sidenav'>
 			{sections.map(item => {
-				return <Section section={item} key={item._id} />
+				return (
+					<Section
+						section={item}
+						key={item._id}
+						user={user}
+						setCurrentNote={setCurrentNote}
+					/>
+				)
 			})}
 		</div>
 	)
