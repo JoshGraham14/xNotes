@@ -1,0 +1,18 @@
+.note-preview {
+    display: flex;
+    align-items: center;
+}
+
+.note-preview p{
+    overflow:hidden;
+    white-space:nowrap;
+    display:inline-block;
+    text-overflow:ellipsis;
+    width: 100%;
+    padding: 0.5em 3em;
+}
+
+.note-preview:hover {
+    cursor: pointer;
+    background-color: var(--color-accent-light);
+}
