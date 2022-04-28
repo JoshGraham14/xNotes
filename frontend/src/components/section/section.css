@@ -1,0 +1,16 @@
+.section {
+    user-select: none;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding-left: 1em;
+    padding-block: 0.75em;
+}
+
+.section-title:hover {
+    background-color: var(--color-accent-light);
+    cursor: pointer;
+}
