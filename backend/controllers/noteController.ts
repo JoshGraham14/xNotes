@@ -3,13 +3,14 @@ import { Request, Response } from 'express'
 import { Note } from '../models/noteModel'
 import { IUserAuthRequest } from '../interfaces'
 
-// @desc    Get notes
-// @route   GET /api/notes
+// @desc    Get notes from a section
+// @route   GET /api/notes/by-section/:id
 // @access  Private
 export const getNotes = asyncHandler(
 	async (req: IUserAuthRequest, res: Response) => {
-		const notes = await Note.find({ user: req.user.id }).sort({
-			section: 1,
+		const notes = await Note.find({
+			user: req.user.id,
+			section: req.params.id,
 		})
 		res.status(200).json(notes)
 	}
