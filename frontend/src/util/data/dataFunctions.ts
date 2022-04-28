@@ -12,10 +12,40 @@ export interface ISection {
 	__v: number
 }
 
+export interface INote {
+	_id: string
+	user: string
+	section: string
+	content: string
+	createdAt: string
+	updatedAt: string
+	__v: number
+}
+
 export const getSections = async (user: IUser): Promise<ISection[]> => {
 	try {
 		const { data } = await axios.get<ISection[]>(
 			API_BASE + '/api/sections',
+			{
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer: ${user.token}`,
+				},
+			}
+		)
+		return data
+	} catch (error: any) {
+		throw new Error(error.message)
+	}
+}
+
+export const getNotes = async (
+	user: IUser,
+	sectionID: string
+): Promise<INote[]> => {
+	try {
+		const { data } = await axios.get<INote[]>(
+			API_BASE + '/api/notes/by-section/' + sectionID,
 			{
 				headers: {
 					'Content-Type': 'application/json',
