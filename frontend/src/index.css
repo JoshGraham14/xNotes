@@ -28,3 +28,11 @@ body {
 .link {
     text-decoration: none;
 }
+
+.red {
+    background-color: #ee5555;
+}
+
+.green {
+    background-color: #5ce45c;
+}
