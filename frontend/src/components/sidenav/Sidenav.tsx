@@ -2,6 +2,7 @@ import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import { getCurrentUser } from '../../util/auth/authFunctions'
 import { getSections, INote, ISection } from '../../util/data/dataFunctions'
 import { Section } from '../section/Section'
+import { SectionForm } from '../sectionForm/SectionForm'
 
 import './sidenav.css'
 
@@ -11,6 +12,7 @@ interface Props {
 
 export const Sidenav = (props: Props) => {
 	const [sections, setSections] = useState([] as ISection[])
+	const [newSection, setNewSection] = useState(false)
 	const { setCurrentNote } = props
 	const user = getCurrentUser()
 
@@ -22,8 +24,23 @@ export const Sidenav = (props: Props) => {
 		getData()
 	}, [])
 
+	const toggleNewSection = () => {
+		setNewSection(!newSection)
+	}
+
 	return (
 		<div className='sidenav'>
+			{newSection ? (
+				<SectionForm
+					toggleNewSection={toggleNewSection}
+					sections={sections}
+					setSections={setSections}
+					user={user}
+				/>
+			) : (
+				<button onClick={toggleNewSection}>New Section</button>
+			)}
+
 			{sections.map(item => {
 				return (
 					<Section

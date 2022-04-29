@@ -20,7 +20,6 @@ export const Section = (props: Props) => {
 	useEffect(() => {
 		const getData = async () => {
 			const data = await getNotes(user, section._id)
-			console.log(data)
 			setNotes(data)
 		}
 		getData()
