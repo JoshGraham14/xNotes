@@ -30,10 +30,21 @@ export const SectionForm = (props: Props) => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input type='text' onChange={handleChange} />
-			<button onClick={toggleNewSection}>X</button>
-			<input type='submit' value='Confirm' />
+		<form className='section-form' onSubmit={handleSubmit}>
+			<input type='text' onChange={handleChange} autoFocus />
+			<div className='section-form-btns'>
+				<input
+					className='section-form-btn green'
+					type='submit'
+					value='Confirm'
+				/>
+				<button
+					className='section-form-btn red'
+					onClick={toggleNewSection}
+				>
+					Cancel
+				</button>
+			</div>
 		</form>
 	)
 }

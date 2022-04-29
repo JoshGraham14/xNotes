@@ -1,0 +1,43 @@
+.section-form {
+    width: 100%;
+    padding-left: 1em;
+    margin-block: 1em;
+}
+
+.section-form input[type='text'] {
+    background-color: var(--color-accent-light);
+    width: 93%;
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+    padding: 0.6em 0.5em;
+    color: var(--color-neutral-light);
+    border: none;
+    border-radius: 0.5em;
+}
+
+.section-form input[type='text']:focus {
+    outline: none;
+    border: 0.2em solid var(--color-neutral-light);
+}
+
+.section-form-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-neutral-light);
+    width: 93%;
+}
+
+.section-form-btn {
+    font-size: 1.2rem;
+    padding: 0.5em 1em;
+    width: 100%;
+    border-radius: 0.5em;
+    border: none;
+}
+
+.section-form-btn:hover {
+    cursor: pointer;
+}
