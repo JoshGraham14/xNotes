@@ -38,7 +38,9 @@ export const Sidenav = (props: Props) => {
 					user={user}
 				/>
 			) : (
-				<button onClick={toggleNewSection}>New Section</button>
+				<button className='new-section-btn' onClick={toggleNewSection}>
+					New Section
+				</button>
 			)}
 
 			{sections.map(item => {
