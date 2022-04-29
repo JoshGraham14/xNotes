@@ -58,3 +58,25 @@ export const getNotes = async (
 		throw new Error(error.message)
 	}
 }
+
+export const createSection = async (
+	user: IUser,
+	sectionName: string
+): Promise<ISection> => {
+	try {
+		const { data } = await axios.post<ISection>(
+			API_BASE + '/api/sections',
+			{ name: sectionName },
+			{
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer: ${user.token}`,
+				},
+			}
+		)
+		console.log(data)
+		return data
+	} catch (error: any) {
+		throw new Error(error.message)
+	}
+}
