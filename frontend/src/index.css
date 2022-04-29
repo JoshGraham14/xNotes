@@ -30,9 +30,17 @@ body {
 }
 
 .red {
-    background-color: #ee5555;
+    background-color: hsl(0, 82%, 63%);
+}
+
+.red:hover {
+    background-color: hsl(0, 82%, 43%);
 }
 
 .green {
-    background-color: #5ce45c;
+    background-color: hsl(120, 72%, 63%);
+}
+
+.green:hover {
+    background-color: hsl(120, 72%, 43%);
 }

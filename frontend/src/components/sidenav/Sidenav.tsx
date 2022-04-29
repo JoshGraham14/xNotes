@@ -13,6 +13,8 @@ interface Props {
 export const Sidenav = (props: Props) => {
 	const [sections, setSections] = useState([] as ISection[])
 	const [newSection, setNewSection] = useState(false)
+	const [highlightedSection, setHighlightedSection] = useState('')
+	const [highlightedNote, setHighlightedNote] = useState('')
 	const { setCurrentNote } = props
 	const user = getCurrentUser()
 
@@ -50,6 +52,10 @@ export const Sidenav = (props: Props) => {
 						key={item._id}
 						user={user}
 						setCurrentNote={setCurrentNote}
+						highlightedSection={highlightedSection}
+						setHighlightedSection={setHighlightedSection}
+						highlightedNote={highlightedNote}
+						setHighlightedNote={setHighlightedNote}
 					/>
 				)
 			})}

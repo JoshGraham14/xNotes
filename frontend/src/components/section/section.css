@@ -14,3 +14,7 @@
     background-color: var(--color-accent-light);
     cursor: pointer;
 }
+
+.highlight {
+    background-color: var(--color-accent-light);
+}

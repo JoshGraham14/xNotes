@@ -10,12 +10,24 @@ interface Props {
 	section: ISection
 	user: IUser
 	setCurrentNote: Dispatch<SetStateAction<INote>>
+	highlightedSection: string
+	setHighlightedSection: Dispatch<SetStateAction<string>>
+	highlightedNote: string
+	setHighlightedNote: Dispatch<SetStateAction<string>>
 }
 
 export const Section = (props: Props) => {
 	const [notes, setNotes] = useState([] as INote[])
 	const [activeSection, setActiveSection] = useState(false)
-	const { section, user, setCurrentNote } = props
+	const {
+		section,
+		user,
+		setCurrentNote,
+		highlightedSection,
+		setHighlightedSection,
+		highlightedNote,
+		setHighlightedNote,
+	} = props
 
 	useEffect(() => {
 		const getData = async () => {
@@ -27,11 +39,19 @@ export const Section = (props: Props) => {
 
 	const handleSectionClick = () => {
 		setActiveSection(!activeSection)
+		setHighlightedSection(section._id)
 	}
 
 	return (
 		<div className='section'>
-			<div onClick={handleSectionClick} className='section-title'>
+			<div
+				onClick={handleSectionClick}
+				className={
+					highlightedSection === section._id
+						? 'section-title highlight'
+						: 'section-title'
+				}
+			>
 				{activeSection ? <FaAngleDown /> : <FaAngleRight />}
 
 				<h3>{section.name}</h3>
@@ -44,6 +64,8 @@ export const Section = (props: Props) => {
 								note={note}
 								key={note._id}
 								setCurrentNote={setCurrentNote}
+								highlightedNote={highlightedNote}
+								setHighlightedNote={setHighlightedNote}
 							/>
 						)
 				  })
