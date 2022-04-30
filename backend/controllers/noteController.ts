@@ -25,7 +25,7 @@ export const getOneNote = asyncHandler(
 		if (note === null) {
 			res.status(404)
 			throw new Error('Note not found')
-		} else if (note.id === req.user.id) {
+		} else if (`${note.user}` === `${req.user.id}`) {
 			res.status(200).json(note)
 		} else {
 			res.status(401)
