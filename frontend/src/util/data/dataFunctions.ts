@@ -59,6 +59,24 @@ export const getNotes = async (
 	}
 }
 
+export const getOneNote = async (noteId: string): Promise<INote> => {
+	const user = getCurrentUser()
+	try {
+		const { data } = await axios.get<INote>(
+			`${API_BASE}/api/notes/${noteId}`,
+			{
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer: ${user.token}`,
+				},
+			}
+		)
+		return data
+	} catch (error: any) {
+		throw new Error(error.message)
+	}
+}
+
 export const createSection = async (
 	user: IUser,
 	sectionName: string
@@ -83,7 +101,7 @@ export const createSection = async (
 export const saveNote = async (
 	content: string,
 	noteId: string
-): Promise<void> => {
+): Promise<INote> => {
 	const user = getCurrentUser()
 	try {
 		const { data } = await axios.put<INote>(
@@ -99,7 +117,9 @@ export const saveNote = async (
 			}
 		)
 		console.log(data)
+		return data
 	} catch (error: any) {
 		console.log(error.message)
+		throw new Error(error.message)
 	}
 }
