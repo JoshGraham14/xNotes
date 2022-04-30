@@ -2,3 +2,13 @@
     width: 100%;
     padding: 1em;
 }
+
+.note textarea {
+    width: 50%;
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1.6;
+    font-size: 1.2rem;
+    background-color: var(--color-accent-dark);
+    color: var(--color-neutral-light);
+    border: none;
+}
