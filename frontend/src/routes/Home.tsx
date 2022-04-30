@@ -25,11 +25,12 @@ export const Home = () => {
 			</>
 		)
 	} else {
+		console.log(currentNote)
 		return (
 			<>
 				<div className='home-container'>
 					<Sidenav setCurrentNote={setCurrentNote} />
-					<Note note={currentNote} />
+					<Note noteId={currentNote._id} />
 				</div>
 			</>
 		)
