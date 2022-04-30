@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { IUser } from '../auth/authFunctions'
+import { getCurrentUser, IUser } from '../auth/authFunctions'
 
 const API_BASE = 'http://localhost:5000'
 
@@ -77,5 +77,29 @@ export const createSection = async (
 		return data
 	} catch (error: any) {
 		throw new Error(error.message)
+	}
+}
+
+export const saveNote = async (
+	content: string,
+	noteId: string
+): Promise<void> => {
+	const user = getCurrentUser()
+	try {
+		const { data } = await axios.put<INote>(
+			`${API_BASE}/api/notes/${noteId}`,
+			{
+				content: content,
+			},
+			{
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer: ${user.token}`,
+				},
+			}
+		)
+		console.log(data)
+	} catch (error: any) {
+		console.log(error.message)
 	}
 }
