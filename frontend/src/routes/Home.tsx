@@ -25,7 +25,6 @@ export const Home = () => {
 			</>
 		)
 	} else {
-		console.log(currentNote)
 		return (
 			<>
 				<div className='home-container'>
