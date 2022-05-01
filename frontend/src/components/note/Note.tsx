@@ -23,8 +23,10 @@ export const Note = (props: Props) => {
 
 	useEffect(() => {
 		const getData = async () => {
-			const data = await getOneNote(noteId)
-			setText(data.content)
+			if (noteId !== undefined) {
+				const data = await getOneNote(noteId)
+				setText(data.content)
+			}
 		}
 		getData()
 	}, [noteId])
